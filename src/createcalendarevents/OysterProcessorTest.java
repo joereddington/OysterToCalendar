@@ -16,10 +16,18 @@ public class OysterProcessorTest extends OysterProcessor {
   public void setUp() throws Exception {}
 
   @Test
-  public void test() {
+  public void testOysterCard() {
     List<String> lines = readLines("testFiles/source.csv");
     produceIcsFile(lines);
     assertEquals(mainString, readFromFile("testFiles/target.ics"));
+    System.out.println(mainString);
+  }
+  
+  @Test
+  public void testContactless() {
+    List<String> lines = readLines("testFiles/sourceContactless.csv");
+    produceIcsFile(lines);
+    assertEquals(mainString, readFromFile("testFiles/targetContactless.ics"));
   }
 
   protected static String readFromFile(String filename) {

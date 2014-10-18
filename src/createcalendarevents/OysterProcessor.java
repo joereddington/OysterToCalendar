@@ -1,4 +1,5 @@
 package createcalendarevents;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -73,7 +74,12 @@ public class OysterProcessor {
 
   private static String changeDateFormat(String orginal) {
     try {
-      DateFormat originalFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+      DateFormat originalFormat;
+      if (orginal.contains("-")) {
+         originalFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+      }else{
+        originalFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);  
+      }
       DateFormat targetFormat = new SimpleDateFormat("yyyyMMdd");
       Date date;
       date = originalFormat.parse(orginal);
